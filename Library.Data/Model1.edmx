@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="library_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Table_Amanat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TarikheAmanat" Type="date" Nullable="false" />
+          <Property Name="TarikheTahvil" Type="date" Nullable="false" />
+          <Property Name="TitleBook" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Vazyat" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Member" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Onvan" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Nevisande" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Nasher" Type="nvarchar" MaxLength="150" />
+          <Property Name="Category" Type="nvarchar" MaxLength="150" />
+          <Property Name="SaleNashr" Type="date" />
+          <Property Name="NobatCahp" Type="int" />
+          <Property Name="Tedad" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="None" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Jensiyat" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Father'sName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CodeMeli" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TarikhOzviat" Type="date" Nullable="false" />
+          <Property Name="TarikhTavalod" Type="date" Nullable="false" />
+          <Property Name="MahaleTavalod" Type="nvarchar" MaxLength="150" />
+          <Property Name="MadrakeTahsili" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TelephoneNumber" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="800" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Vaziyat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vaziyat" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Table_Amanat_Table_Amanat">
+          <End Role="Table_Amanat" Type="Self.Table_Amanat" Multiplicity="1" />
+          <End Role="Table_Amanat1" Type="Self.Table_Amanat" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Amanat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Amanat1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="library_DBModelStoreContainer">
+          <EntitySet Name="Table_Amanat" EntityType="Self.Table_Amanat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Book" EntityType="Self.Table_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Category" EntityType="Self.Table_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Member" EntityType="Self.Table_Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Users" EntityType="Self.Table_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Vaziyat" EntityType="Self.Table_Vaziyat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Table_Amanat_Table_Amanat" Association="Self.FK_Table_Amanat_Table_Amanat">
+            <End Role="Table_Amanat" EntitySet="Table_Amanat" />
+            <End Role="Table_Amanat1" EntitySet="Table_Amanat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="library_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Table_Amanat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TarikheAmanat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TarikheTahvil" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TitleBook" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vazyat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Member" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Table_Amanat1" Relationship="Self.FK_Table_Amanat_Table_Amanat" FromRole="Table_Amanat" ToRole="Table_Amanat1" />
+          <NavigationProperty Name="Table_Amanat2" Relationship="Self.FK_Table_Amanat_Table_Amanat" FromRole="Table_Amanat1" ToRole="Table_Amanat" />
+        </EntityType>
+        <EntityType Name="Table_Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Onvan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nevisande" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nasher" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SaleNashr" Type="DateTime" Precision="0" />
+          <Property Name="NobatCahp" Type="Int32" />
+          <Property Name="Tedad" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table_Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jensiyat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Father_sName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CodeMeli" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TarikhOzviat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TarikhTavalod" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MahaleTavalod" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MadrakeTahsili" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelephoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Table_Amanat_Table_Amanat">
+          <End Role="Table_Amanat" Type="Self.Table_Amanat" Multiplicity="1" />
+          <End Role="Table_Amanat1" Type="Self.Table_Amanat" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Amanat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Amanat1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="library_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Table_Amanat" EntityType="Self.Table_Amanat" />
+          <EntitySet Name="Table_Book" EntityType="Self.Table_Book" />
+          <EntitySet Name="Table_Member" EntityType="Self.Table_Member" />
+          <EntitySet Name="Table_Users" EntityType="Self.Table_Users" />
+          <EntitySet Name="Table_Category" EntityType="Self.Table_Category" />
+          <AssociationSet Name="FK_Table_Amanat_Table_Amanat" Association="Self.FK_Table_Amanat_Table_Amanat">
+            <End Role="Table_Amanat" EntitySet="Table_Amanat" />
+            <End Role="Table_Amanat1" EntitySet="Table_Amanat" />
+          </AssociationSet>
+          <EntitySet Name="Table_Vaziyat" EntityType="library_DBModel.Table_Vaziyat" />
+        </EntityContainer>
+        <EntityType Name="Table_Vaziyat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vaziyat" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="library_DBModelStoreContainer" CdmEntityContainer="library_DBEntities">
+          <EntitySetMapping Name="Table_Amanat">
+            <EntityTypeMapping TypeName="library_DBModel.Table_Amanat">
+              <MappingFragment StoreEntitySet="Table_Amanat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TarikheAmanat" ColumnName="TarikheAmanat" />
+                <ScalarProperty Name="TarikheTahvil" ColumnName="TarikheTahvil" />
+                <ScalarProperty Name="TitleBook" ColumnName="TitleBook" />
+                <ScalarProperty Name="Vazyat" ColumnName="Vazyat" />
+                <ScalarProperty Name="Member" ColumnName="Member" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Book">
+            <EntityTypeMapping TypeName="library_DBModel.Table_Book">
+              <MappingFragment StoreEntitySet="Table_Book">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Onvan" ColumnName="Onvan" />
+                <ScalarProperty Name="Nevisande" ColumnName="Nevisande" />
+                <ScalarProperty Name="Nasher" ColumnName="Nasher" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SaleNashr" ColumnName="SaleNashr" />
+                <ScalarProperty Name="NobatCahp" ColumnName="NobatCahp" />
+                <ScalarProperty Name="Tedad" ColumnName="Tedad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Member">
+            <EntityTypeMapping TypeName="library_DBModel.Table_Member">
+              <MappingFragment StoreEntitySet="Table_Member">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Jensiyat" ColumnName="Jensiyat" />
+                <ScalarProperty Name="Father_sName" ColumnName="Father'sName" />
+                <ScalarProperty Name="CodeMeli" ColumnName="CodeMeli" />
+                <ScalarProperty Name="TarikhOzviat" ColumnName="TarikhOzviat" />
+                <ScalarProperty Name="TarikhTavalod" ColumnName="TarikhTavalod" />
+                <ScalarProperty Name="MahaleTavalod" ColumnName="MahaleTavalod" />
+                <ScalarProperty Name="MadrakeTahsili" ColumnName="MadrakeTahsili" />
+                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Users">
+            <EntityTypeMapping TypeName="library_DBModel.Table_Users">
+              <MappingFragment StoreEntitySet="Table_Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Category">
+            <EntityTypeMapping TypeName="library_DBModel.Table_Category">
+              <MappingFragment StoreEntitySet="Table_Category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Vaziyat">
+            <EntityTypeMapping TypeName="library_DBModel.Table_Vaziyat">
+              <MappingFragment StoreEntitySet="Table_Vaziyat">
+                <ScalarProperty Name="Vaziyat" ColumnName="Vaziyat" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
